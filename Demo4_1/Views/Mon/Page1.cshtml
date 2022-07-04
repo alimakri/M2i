@@ -1,0 +1,27 @@
+﻿@model Demo4_1.Models.DataPage1
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Page n° 1</title>
+</head>
+<body>
+    <div>
+        <h1>@Model.Titre</h1>
+        <h2>Développé par @ViewBag.Nom</h2>
+        @foreach (var todo in Model.Todos)
+        {
+            @todo.Id
+            <br />
+            <a href="/mon/page1/?id=@todo.Id"> @todo.Libelle</a>
+            <br />
+            @todo.DateExecution
+            <br />
+        }
+    </div>
+</body>
+</html>
