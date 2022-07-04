@@ -9,8 +9,7 @@ namespace Demo4_1.Controllers
 {
     public class MonController : Controller
     {
-        public DataPage1 Data = null;
-        public ActionResult Page1()
+        public MonController()
         {
             Data = new DataPage1
             {
@@ -21,13 +20,29 @@ namespace Demo4_1.Controllers
                     new Todo { Id = 3, Libelle = "Aller chanter", DateExecution = new DateTime(2022, 7, 6) }
                 }
             };
+        }
+        public DataPage1 Data = null;
+        public ActionResult Page1()
+        {
             ViewBag.Nom = "Ali MAKRI";
             //ViewData["Nom"] = "Ali MAKRI"; // Obsolete
             return View(Data);
         }
         public ActionResult Page2(int id)
         {
-            return View();
+            var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
+
+            //Todo todo = null;
+            //foreach(var t in Data.Todos)
+            //{
+            //    if (t.Id == id)
+            //    {
+            //        todo = t;
+            //        break;
+            //    }
+            //}
+
+            return View(todo);
         }
     }
 }

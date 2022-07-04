@@ -1,0 +1,21 @@
+﻿@using Demo4_1.Models
+
+@model Todo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+    @Model.Id <br/> @Model.Libelle <br/>@Model.DateExecution 
+    </div>
+    <a href="/mon/page1">Retour</a>
+</body>
+</html>
