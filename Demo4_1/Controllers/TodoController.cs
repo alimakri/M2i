@@ -7,9 +7,9 @@ using System.Web.Mvc;
 
 namespace Demo4_1.Controllers
 {
-    public class MonController : Controller
+    public class TodoController : Controller
     {
-        public MonController()
+        public TodoController()
         {
             Data = new DataPage1
             {
@@ -22,13 +22,13 @@ namespace Demo4_1.Controllers
             };
         }
         public DataPage1 Data = null;
-        public ActionResult Page1()
+        public ActionResult Index()
         {
             ViewBag.Nom = "Ali MAKRI";
             //ViewData["Nom"] = "Ali MAKRI"; // Obsolete
             return View(Data);
         }
-        public ActionResult Page2(int id)
+        public ActionResult Detail(int id)
         {
             var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
 
@@ -43,6 +43,19 @@ namespace Demo4_1.Controllers
             //}
 
             return View(todo);
+        }
+        public ActionResult Edit(int id)
+        {
+            var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
+            return View(todo);
+        }
+        [HttpPost]
+        public ActionResult Edit(Todo todoModifie)
+        {
+            var todoOrigin = Data.Todos.Where(t => t.Id == todoModifie.Id).FirstOrDefault();
+            todoOrigin.Fait = todoModifie.Fait;
+            todoOrigin.Libelle = todoModifie.Libelle;
+            return View(todoModifie);
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@using Demo4_1.Models
+
+@model Todo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <form action="/todo/edit" method="post">
+            <input type="hidden" name="id" value="@Model.Id"/>
+            @Model.Id<br />
+            Libellé : <input name="libelle" type="text" value="@Model.Libelle" />
+            <br />
+            Etat :
+            @if (Model.Fait)
+            {
+                <input name="Fait" type="checkbox" checked="checked" />
+            }
+            else
+            {
+                <input name="Fait" type="checkbox" />
+            }
+            <input type="submit" value="Valider"/>
+        </form>
+    </div>
+    <a href="/todo/index">Retour</a>
+</body>
+</html>

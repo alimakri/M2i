@@ -7,13 +7,14 @@ namespace Demo4_1.Models
 {
     public class DataPage1
     {
-        public string Titre;
-        public List<Todo> Todos;
+        public string Titre { get; set; }
+        public List<Todo> Todos { get; set; }
     }
     public class Todo
     {
-        public int Id;
-        public string Libelle;
-        public DateTime DateExecution;
+        public int Id { get; set; }
+        public bool Fait { get; set; } = false;
+        public string Libelle { get; set; }
+        public DateTime DateExecution { get; set; }
     }
 }
