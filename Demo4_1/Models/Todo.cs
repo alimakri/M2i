@@ -49,8 +49,33 @@ namespace Demo4_1.Models
             cmd.ExecuteNonQuery();
         }
 
+        internal void Edit(Todo todoEdit)
+        {
+            var fait = todoEdit.Fait ? "1" : "0";
+            // TODO: Add delete logic here
+            var cmd = new SqlCommand();
+            cmd.Connection = Cnx;
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $@"update Todo 
+                                    set Libelle='{todoEdit.Libelle.Replace("'", "''")}', 
+                                        Fait={fait}, 
+                                        DateExecution='{todoEdit.DateExecution}' 
+                                  where Id={todoEdit.Id}";
+            cmd.ExecuteNonQuery();
+        }
+
         public string Titre { get; set; }
         public List<Todo> Todos { get; set; }
+
+        internal void Delete(Todo todoDelete)
+        {
+            // TODO: Add delete logic here
+            var cmd = new SqlCommand();
+            cmd.Connection = Cnx;
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"delete Todo where Id={todoDelete.Id}";
+            cmd.ExecuteNonQuery();
+        }
     }
     public class Todo
     {

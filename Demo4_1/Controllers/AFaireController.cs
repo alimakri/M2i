@@ -22,27 +22,24 @@ namespace Demo4_1.Controllers
             return View(Data);
         }
 
-        // GET: AFaire/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
+            return View(todo);
         }
 
-        // GET: AFaire/Create
         public ActionResult Create()
         {
             var todo = new Todo();
             return View(todo);
         }
 
-        // POST: AFaire/Create
         [HttpPost]
         public ActionResult Create(Todo todoCree)
         {
             try
             {
                 Data.Add(todoCree);
-
                 return RedirectToAction("Index");
             }
             catch
@@ -57,12 +54,11 @@ namespace Demo4_1.Controllers
             return View();
         }
 
-        // POST: AFaire/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Todo todoDelete)
+        public ActionResult Edit(int id, Todo todoEdit)
         {
-            
-                return View();
+            Data.Edit(todoEdit);
+            return View();
         }
 
         // GET: AFaire/Delete/5
@@ -73,19 +69,12 @@ namespace Demo4_1.Controllers
             return View(todo);
         }
 
-        // POST: AFaire/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, Todo todoDelete)
         {
             try
             {
-                // TODO: Add delete logic here
-                var cmd = new SqlCommand();
-                cmd.Connection = Cnx;
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = $"delete Todo where Id={todoDelete.Id}";
-                cmd.ExecuteNonQuery();
-
+                Data.Delete(todoDelete);
                 return RedirectToAction("Index");
             }
             catch
