@@ -1,0 +1,15 @@
+﻿USE [TodoDB]
+CREATE TABLE [dbo].[Comment](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Libelle] [nvarchar](max) NOT NULL,
+	[Todo] [int] NOT NULL,
+ CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+))
+GO
+ALTER TABLE [dbo].[Comment]  WITH CHECK ADD  CONSTRAINT [FK_Comment_Todo] FOREIGN KEY([Todo])
+REFERENCES [dbo].[Todo] ([Id])
+GO
+ALTER TABLE [dbo].[Comment] CHECK CONSTRAINT [FK_Comment_Todo]
+GO
