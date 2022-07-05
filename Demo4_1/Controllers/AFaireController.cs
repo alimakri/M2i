@@ -1,9 +1,6 @@
 ﻿using Demo4_1.Models;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Demo4_1.Controllers
@@ -12,28 +9,32 @@ namespace Demo4_1.Controllers
     {
         public DataPage1 Data = null;
 
+        // Constructor
         public AFaireController()
         {
             Data = new DataPage1();
         }
-        // GET: AFaire
+
+        // Liste
         public ActionResult Index()
         {
             return View(Data);
         }
 
+        // Détail d'un todo
         public ActionResult Details(int id)
         {
             var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
             return View(todo);
         }
 
+        // Create Todo
         public ActionResult Create()
         {
             var todo = new Todo();
+            todo.DateExecution = DateTime.Now;
             return View(todo);
         }
-
         [HttpPost]
         public ActionResult Create(Todo todoCree)
         {
@@ -48,27 +49,26 @@ namespace Demo4_1.Controllers
             }
         }
 
-        // GET: AFaire/Edit/5
+        // Edit Todo
         public ActionResult Edit(int id)
         {
-            return View();
+            var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
+            return View(todo);
         }
-
         [HttpPost]
         public ActionResult Edit(int id, Todo todoEdit)
         {
             Data.Edit(todoEdit);
-            return View();
+            return View(todoEdit);
         }
 
-        // GET: AFaire/Delete/5
+        // Delete Todo
         public ActionResult Delete(int id)
         {
             var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
 
             return View(todo);
         }
-
         [HttpPost]
         public ActionResult Delete(int id, Todo todoDelete)
         {

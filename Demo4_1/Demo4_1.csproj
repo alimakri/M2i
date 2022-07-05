@@ -171,6 +171,8 @@
     <Content Include="Views\AFaire\Index.cshtml" />
     <Content Include="Views\AFaire\Create.cshtml" />
     <Content Include="Views\AFaire\Delete.cshtml" />
+    <Content Include="Views\AFaire\Details.cshtml" />
+    <Content Include="Views\AFaire\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

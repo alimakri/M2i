@@ -25,12 +25,13 @@ namespace Demo4_1.Models
             var rd = cmd.ExecuteReader();
             while (rd.Read())
             {
+                var d = (DateTime)rd["DateExecution"];
                 Todos.Add(new Todo
                 {
                     Id = (int)rd["Id"],
                     Libelle = (string)rd["Libelle"],
                     Fait = (bool)rd["Fait"],
-                    DateExecution = (DateTime)rd["DateExecution"]
+                    DateExecution = d
                 });
             }
             rd.Close();
@@ -45,6 +46,7 @@ namespace Demo4_1.Models
             cmd.Connection = Cnx;
             cmd.CommandType = System.Data.CommandType.Text;
             var fait = todoCree.Fait ? "1" : "0";
+
             cmd.CommandText = $"insert Todo (Libelle, Fait, DateExecution) values('{todoCree.Libelle}', {fait}, '{todoCree.DateExecution.Date}')";
             cmd.ExecuteNonQuery();
         }
