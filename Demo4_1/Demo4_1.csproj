@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AFaireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MonModelBinder.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -174,6 +175,8 @@
     <Content Include="Views\AFaire\Details.cshtml" />
     <Content Include="Views\AFaire\Edit.cshtml" />
     <Content Include="Support\20486B-ENU-TrainerHandbook.pdf" />
+    <Content Include="Views\AFaire\About.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

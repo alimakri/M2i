@@ -32,7 +32,6 @@ namespace Demo4_1.Controllers
         public ActionResult Create()
         {
             var todo = new Todo();
-            todo.DateExecution = DateTime.Now;
             return View(todo);
         }
         [HttpPost]
@@ -48,6 +47,18 @@ namespace Demo4_1.Controllers
                 return View();
             }
         }
+        //public ActionResult Create(Todo todoCree)
+        //{
+        //    try
+        //    {
+        //        Data.Add(todoCree);
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // Edit Todo
         public ActionResult Edit(int id)
@@ -81,6 +92,11 @@ namespace Demo4_1.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult About()
+        {
+            return View();
         }
     }
 }

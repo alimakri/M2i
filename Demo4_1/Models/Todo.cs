@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -83,7 +85,12 @@ namespace Demo4_1.Models
     {
         public int Id { get; set; }
         public bool Fait { get; set; } = false;
+
+        [DisplayName("Libellé")]
+        [Required(ErrorMessage ="Tapez un libellé")]
         public string Libelle { get; set; }
+
+        [DisplayName("Date d'exécution")]
         public DateTime DateExecution { get; set; }
     }
 }

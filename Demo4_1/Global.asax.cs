@@ -1,3 +1,5 @@
+using Demo4_1.Controllers;
+using Demo4_1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,8 @@ namespace Demo4_1
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //ModelBinders.Binders.Add(typeof(Todo), new MonModelBinder());
         }
     }
 }
