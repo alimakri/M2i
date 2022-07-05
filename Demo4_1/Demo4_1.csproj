@@ -173,6 +173,7 @@
     <Content Include="Views\AFaire\Delete.cshtml" />
     <Content Include="Views\AFaire\Details.cshtml" />
     <Content Include="Views\AFaire\Edit.cshtml" />
+    <Content Include="Support\20486B-ENU-TrainerHandbook.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
