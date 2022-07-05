@@ -11,41 +11,10 @@ namespace Demo4_1.Controllers
     public class AFaireController : Controller
     {
         public DataPage1 Data = null;
+
         public AFaireController()
         {
-            Data = new DataPage1
-            {
-                Titre = "Ma première page ASP.Net MVC 5",
-                Todos = new List<Todo>()
-            };
-
-            var cnx = new SqlConnection();
-            cnx.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=TodoDB;Integrated Security=True";
-            cnx.Open();
-            var cmd = new SqlCommand();
-            cmd.Connection = cnx;
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select Id, Libelle, Fait, DateExecution from Todo";
-            var rd = cmd.ExecuteReader();
-            while (rd.Read())
-            {
-                Data.Todos.Add(new Todo
-                {
-                    Id = (int)rd["Id"],
-                    Libelle = (string)rd["Libelle"],
-                    Fait = (bool)rd["Fait"],
-                    DateExecution = (DateTime)rd["DateExecution"]
-                });
-            }
-            //Data = new DataPage1
-            //{
-            //    Titre = "Ma première page ASP.Net MVC 5",
-            //    Todos = new List<Todo> {
-            //        new Todo { Id = 1, Libelle = "Aller manger", DateExecution = new DateTime(2022, 7, 4) },
-            //        new Todo { Id = 2, Libelle = "Aller dormir", DateExecution = new DateTime(2022, 7, 5) },
-            //        new Todo { Id = 3, Libelle = "Aller chanter", DateExecution = new DateTime(2022, 7, 6) }
-            //    }
-            //};
+            Data = new DataPage1();
         }
         // GET: AFaire
         public ActionResult Index()
@@ -72,8 +41,8 @@ namespace Demo4_1.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                Data.Todos.Add(todoCree);
+                Data.Add(todoCree);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -90,33 +59,32 @@ namespace Demo4_1.Controllers
 
         // POST: AFaire/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Todo todoDelete)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+            
                 return View();
-            }
         }
 
         // GET: AFaire/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var todo = Data.Todos.Where(t => t.Id == id).FirstOrDefault();
+
+            return View(todo);
         }
 
         // POST: AFaire/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Todo todoDelete)
         {
             try
             {
                 // TODO: Add delete logic here
+                var cmd = new SqlCommand();
+                cmd.Connection = Cnx;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = $"delete Todo where Id={todoDelete.Id}";
+                cmd.ExecuteNonQuery();
 
                 return RedirectToAction("Index");
             }

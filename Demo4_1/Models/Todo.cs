@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,47 @@ namespace Demo4_1.Models
 {
     public class DataPage1
     {
+        public SqlConnection Cnx;
+
+        public DataPage1()
+        {
+            Titre = "Ma première page ASP.Net MVC 5";
+            Todos = new List<Todo>();
+
+            Cnx = new SqlConnection();
+            Cnx.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=TodoDB;Integrated Security=True";
+            Cnx.Open();
+            var cmd = new SqlCommand();
+            cmd.Connection = Cnx;
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "select Id, Libelle, Fait, DateExecution from Todo";
+            var rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                Todos.Add(new Todo
+                {
+                    Id = (int)rd["Id"],
+                    Libelle = (string)rd["Libelle"],
+                    Fait = (bool)rd["Fait"],
+                    DateExecution = (DateTime)rd["DateExecution"]
+                });
+            }
+            rd.Close();
+
+        }
+
+        internal void Add(Todo todoCree)
+        {
+            // TODO: Add insert logic here
+            Todos.Add(todoCree);
+            var cmd = new SqlCommand();
+            cmd.Connection = Cnx;
+            cmd.CommandType = System.Data.CommandType.Text;
+            var fait = todoCree.Fait ? "1" : "0";
+            cmd.CommandText = $"insert Todo (Libelle, Fait, DateExecution) values('{todoCree.Libelle}', {fait}, '{todoCree.DateExecution.Date}')";
+            cmd.ExecuteNonQuery();
+        }
+
         public string Titre { get; set; }
         public List<Todo> Todos { get; set; }
     }

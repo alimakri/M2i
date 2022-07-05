@@ -170,6 +170,7 @@
     <Content Include="Views\Todo\Edit.cshtml" />
     <Content Include="Views\AFaire\Index.cshtml" />
     <Content Include="Views\AFaire\Create.cshtml" />
+    <Content Include="Views\AFaire\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
