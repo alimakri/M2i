@@ -24,6 +24,7 @@ namespace DemoEF
         public string Libelle { get; set; }
         public bool Fait { get; set; }
         public System.DateTime DateExecution { get; set; }
+        public string Machine { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

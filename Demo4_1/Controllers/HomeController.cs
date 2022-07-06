@@ -8,6 +8,7 @@ namespace Demo4_1.Controllers
 {
     public class HomeController : Controller
     {
+        [ValidateAntiForgeryToken]
         public ActionResult Index()
         {
             return View();

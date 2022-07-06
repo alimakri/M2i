@@ -91,6 +91,7 @@ namespace Demo4_1.Models
         public string Libelle { get; set; }
 
         [DisplayName("Date d'exécution")]
+        [DataType("Date")]
         public DateTime DateExecution { get; set; }
     }
 }

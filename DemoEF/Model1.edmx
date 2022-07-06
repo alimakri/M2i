@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TodoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TodoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,6 +21,7 @@
           <Property Name="Libelle" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Fait" Type="bit" Nullable="false" />
           <Property Name="DateExecution" Type="datetime" Nullable="false" />
+          <Property Name="Machine" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_Comment_Todo">
           <End Role="Todo" Type="Self.Todo" Multiplicity="1" />
@@ -42,8 +43,7 @@
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TodoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -65,6 +65,7 @@
           <Property Name="Fait" Type="Boolean" Nullable="false" />
           <Property Name="DateExecution" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Todo" FromRole="Todo" ToRole="Comment" />
+          <Property Name="Machine" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_Comment_Todo">
           <End Role="Todo" Type="Self.Todo" Multiplicity="1" />
@@ -104,6 +105,7 @@
           <EntitySetMapping Name="Todoes">
             <EntityTypeMapping TypeName="TodoDBModel.Todo">
               <MappingFragment StoreEntitySet="Todo">
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Libelle" ColumnName="Libelle" />
                 <ScalarProperty Name="Fait" ColumnName="Fait" />
