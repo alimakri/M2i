@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoIoc", "DemoIoc\DemoIoc.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoIocWeb", "DemoIocWeb\DemoIocWeb.csproj", "{E9A2ACED-17D0-4338-AF9D-FF992E66C2EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMobile", "DemoMobile\DemoMobile.csproj", "{DDA0BE80-7AEE-4F85-A6E8-59423EDD7C49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoJs", "DemoJs\DemoJs.csproj", "{05380039-FCC7-4CC4-B3A9-5E6877653592}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{E9A2ACED-17D0-4338-AF9D-FF992E66C2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9A2ACED-17D0-4338-AF9D-FF992E66C2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9A2ACED-17D0-4338-AF9D-FF992E66C2EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA0BE80-7AEE-4F85-A6E8-59423EDD7C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA0BE80-7AEE-4F85-A6E8-59423EDD7C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA0BE80-7AEE-4F85-A6E8-59423EDD7C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA0BE80-7AEE-4F85-A6E8-59423EDD7C49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05380039-FCC7-4CC4-B3A9-5E6877653592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05380039-FCC7-4CC4-B3A9-5E6877653592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05380039-FCC7-4CC4-B3A9-5E6877653592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05380039-FCC7-4CC4-B3A9-5E6877653592}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

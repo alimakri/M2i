@@ -1,0 +1,22 @@
+﻿<h2 style="color:blue" id="titre">Index</h2>
+<button onclick="f();" id="bouton1" style="visibility:visible">Rouge</button>
+<div style="display:inline-block">
+    <button style="top:150px;left:200px" id="bouton2">Couleur du server</button>
+</div>
+<script>
+    function f() {
+        var objetH2 = document.getElementById("titre");
+        objetH2.style.color = "red";
+        objetH2.innerHTML = "Test de texte";
+        var b = document.getElementById("bouton1");
+        b.style.visibility = "hidden";
+    }
+</script>
+
+@section scripts{
+    <script>
+        $(function () {
+            alert("Auto-Lancement");
+        });
+    </script>
+}
