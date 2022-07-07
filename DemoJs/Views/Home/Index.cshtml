@@ -16,7 +16,19 @@
 @section scripts{
     <script>
         $(function () {
-            alert("Auto-Lancement");
+            $("#bouton2").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:62707/Home/Couleur",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var c = JSON.parse(data);
+                        $("titre").html(c[0]);
+                        $("#titre").css("color", c[1]);
+                    },
+                    failure: function (r) { }
+                });
+            });
         });
     </script>
 }
